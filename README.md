@@ -6,7 +6,7 @@ Code had to be a little bit adjusted to work properly using MATLAB. Most likely 
 
 MATLAB plot presenting a, b and c funcions is presented below:
 
-![Plot of a, b and c functions in MATLAB](/img/task_1/plot.png)
+![Plot of a, b and c functions in MATLAB](/img/task_1.png)
 
 Parameters described in code:
 * a - function described in interview file;
@@ -15,11 +15,14 @@ Parameters described in code:
 
 ## Task 2
 
-All of the a, b and c combinations presumably do not exceed accuracy limit defined in document (2.15e-6). By my understanding, it is easier to implement coefficients with less complex fractions, determined by amount of decimal places.
-By the looks of it, the CoeffTable.hpp has this line:
+All of the a, b and c combinations do not exceed accuracy limit defined in document (2.15e-6), but some of them only by a small margin. The coeffs can be cut to reduce its size and gate-count:
 
-{   8,   -0.5101835727691650390625000000,    1.7201766967773437500000000000,    1.0068359375000000000000000000 }
+* a - can be cut by 2 bytes (3 integer, 27 fractional)
+* b - can be cut by 13 bytes (3 integer, 16 fractional)
+* c - can be cut by 19 bytes (2 integer, 11 fractional)
 
-, which presumably has the least significant amount of decimal places.
+The results of optimizing parameters can be presented below:
+
+![Task 2 - optimizing a, b and c parameters width](/img/task_2.png)
 
 
