@@ -15,7 +15,11 @@ Parameters described in code:
 
 ## Task 2
 
-All of the a, b and c combinations presumably do not exceed accuracy limit defined in document (2.15e-6). By my understanding, it is easier to implement coefficients with less complex fractions.
-By the looks of it, the CoeffTable.hpp has this line:     {   8,   -0.5101835727691650390625000000,    1.7201766967773437500000000000,    1.0068359375000000000000000000 }, which presumably has the highest amount of zeroes.
+All of the a, b and c combinations presumably do not exceed accuracy limit defined in document (2.15e-6). By my understanding, it is easier to implement coefficients with less complex fractions, determined by amount of decimal places.
+By the looks of it, the CoeffTable.hpp has this line:
+
+{   8,   -0.5101835727691650390625000000,    1.7201766967773437500000000000,    1.0068359375000000000000000000 }
+
+, which presumably has the least significant amount of decimal places.
 
 
