@@ -25,4 +25,8 @@ The results of optimizing parameters can be presented below:
 
 ![Task 2 - optimizing a, b and c parameters width](/img/task_2.png)
 
+## Task 3
 
+All of RTL components have been completed. Look-up table has been made using [Python automation script](/rtl_model/convert_table_to_lut.py). The results of Vivado simulation can be presented below:
+
+![Task 3 - Vivado simulation](/img/task_3.png)
