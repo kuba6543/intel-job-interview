@@ -30,3 +30,13 @@ The results of optimizing parameters can be presented below:
 All of RTL components have been completed. Look-up table has been made using [Python automation script](/rtl_model/convert_table_to_lut.py). The results of Vivado simulation can be presented below:
 
 ![Task 3 - Vivado simulation](/img/task_3.png)
+
+## Task 4
+
+The Verilator simulation has been performed after some tweaks. The results are presented below:
+
+![Task 4 - Verilator results](/img/task_4a.png)
+
+After performing Verilator simulation, the GTKWave dump file has been opened:
+
+![Task 4 - GTKWave results](/img/task_4b.png)
