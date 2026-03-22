@@ -21,7 +21,7 @@ a_t  a_lut;
 b_t  b_lut;
 c_t  c_lut;
 
-y_t  x_squared; 
+logic [33:0]  x_squared; // somehow wider data gives smaller errors
 
 y_t a_shift;
 y_t bx_shift;
@@ -58,9 +58,9 @@ always_ff @(posedge clk) begin
         bx_shift    <= '0; 
         cx2_shift   <= '0; 
     end else begin
-        a_shift     <= a_lut >>> (A_F - Y_F);                                         // shift by 27-23=4 bits
-        bx_shift    <= (b_lut * $signed({1'b0, x_lut})) >>> (B_F + X_F - Y_F);        // shift by 16+23-23=16 bits
-        cx2_shift   <= (c_lut * $signed(x_squared)) >>> (C_F + Y_F - Y_F);            // shift by 11+23-23=11 bits
+        a_shift   <= a_lut >>> (A_F - Y_F);                                                             // shift by 27-23=4 bits
+        bx_shift  <= Y_W'( (64'($signed(b_lut)) * 64'($signed({1'b0, x_lut}))) >>> (B_F + X_F - Y_F) ); // shift by 16+23-23=16 bits
+        cx2_shift <= Y_W'( (64'($signed(c_lut)) * 64'($signed({1'b0, x_squared}))) >>> (C_F + Y_F)   ); // shift by 11+23=34 bits
     end
 end
 

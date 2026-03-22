@@ -129,6 +129,8 @@ inline void checkOutput
     std::deque<x_fxd_t>                & lat_fifo
 )
 {
+if (!top->y_dv) return;
+
     using namespace std;
 
     x_fxd_t x_fxd = lat_fifo.front();
