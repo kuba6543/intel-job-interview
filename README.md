@@ -44,3 +44,7 @@ After performing Verilator simulation, the GTKWave dump file has been opened:
 Some adjustment has been made to the SystemVerilog RTL and the error has been reduced to 2.33e-6:
 
 ![Task 4 - Error adjust](/img/task_4c.png)
+
+After even more adjustments to code in last commit, the error has been presumably eliminated:
+
+![Task 4 - Error eliminated](/img/task_4d.png)
