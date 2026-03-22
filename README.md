@@ -40,3 +40,7 @@ The Verilator simulation has been performed after some tweaks. The results are p
 After performing Verilator simulation, the GTKWave dump file has been opened:
 
 ![Task 4 - GTKWave results](/img/task_4b.png)
+
+Some adjustment has been made to the SystemVerilog RTL and the error has been reduced to 2.33e-6:
+
+![Task 4 - Error adjust](/img/task_4c.png)
