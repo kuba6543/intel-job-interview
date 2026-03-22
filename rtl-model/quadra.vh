@@ -35,19 +35,19 @@ localparam int  A_I =  3;          //         =  3
 localparam int  A_F = 27;          //         = 27
 localparam int  A_W = A_I + A_F;   //  3 + 27 = 30 (u3.27)
 
-typedef logic [A_W-1:0] a_t;
+typedef logic signed [A_W-1:0] a_t;
 
 localparam int  B_I =  3;          //         =  3
 localparam int  B_F = 16;          //         = 16
 localparam int  B_W = B_I + B_F;   //  3 + 16 = 19 (u3.16)
 
-typedef logic [B_W-1:0] b_t;
+typedef logic signed [B_W-1:0] b_t;
 
 localparam int  C_I =  2;          //         =  2
 localparam int  C_F = 11;          //         = 11
 localparam int  C_W = C_I + C_F;   //  2 + 11 = 13 (u2.11)
 
-typedef logic [C_W-1:0] c_t;
+typedef logic signed [C_W-1:0] c_t;
 
 
 `endif
