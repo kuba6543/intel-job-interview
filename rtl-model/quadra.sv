@@ -21,7 +21,7 @@ a_t  a_lut;
 b_t  b_lut;
 c_t  c_lut;
 
-logic [33:0]  x_squared; // wider data (2*(x_t-x_lut)) gives smaller errors
+logic [(X_W*2)-1:0]  x_squared;
 
 logic signed [63:0] b_mult;
 logic signed [63:0] c_mult;
@@ -47,7 +47,7 @@ always_ff @(posedge clk) begin
         a_lut <= '0;
         b_lut <= '0;
         c_lut <= '0;
-    end if(x_dv) begin
+    end else if(x_dv) begin
         x_lut <= x;
         a_lut <= a;
         b_lut <= b;
@@ -59,9 +59,9 @@ always_comb begin
     b_mult = 64'($signed(b_lut)) * 64'($signed({1'b0, x_lut}));
     c_mult = 64'($signed(c_lut)) * 64'($signed({1'b0, x_squared}));
 
-    a_plus_half = a_lut  + (1 << (A_F - Y_F - 1));
-    b_plus_half = b_mult + (1 << (B_F + X_F - Y_F - 1));
-    c_plus_half = c_mult + (1 << (C_F + Y_F - 1));
+    a_plus_half = 64'($signed(a_lut)) + (64'sh1 << (A_F - Y_F - 1));
+    b_plus_half = b_mult              + (64'sh1 << (B_F + X_F - Y_F - 1));
+    c_plus_half = c_mult              + (64'sh1 << (C_F + X_F + X_F - Y_F - 1));
 end
 
 always_ff @(posedge clk) begin                                                                   
@@ -77,8 +77,8 @@ always_ff @(posedge clk) begin
         // add 0.5 and shift by 27-23=4 bits to round up
         bx_shift    <= Y_W'(b_plus_half >>> (B_F + X_F - Y_F)); 
         // add 0.5 and shift by 16+23-23=16 bits to round up
-        cx2_shift   <= Y_W'(c_plus_half >>> (C_F + Y_F));
-        // add 0.5 and shift by 11+23=34 bits to round up
+        cx2_shift   <= Y_W'(c_plus_half >>> (C_F + X_F + X_F - Y_F));
+        // add 0.5 and shift by 11+23+23-23=34 bits to round up
     end
 end
 
